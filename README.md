@@ -12,7 +12,7 @@
 
 | | |
 |---|---|
-| ![暖薪](warmwage/screenshots/01_dashboard.jpg) | **類型**：薪資試算工具（iOS／Android／網頁）<br><br>**重點**：月薪、時薪、按件計酬與公務人員四種計薪制度；跨日班引擎；勞健保、二代健保、所得稅依官方費率；資料只加密存在使用者手機<br><br>**技術**：Flutter · 純 Dart 計算核心 · AES-256-GCM 加密備份 · RevenueCat · GitHub Actions<br><br>**測試**：1,270 項以上單元與畫面測試、golden test 逐像素比對<br><br>👉 [看完整介紹](warmwage/README.md) |
+| ![暖薪](warmwage/screenshots/01_dashboard.jpg) | **類型**：薪資試算工具（iOS／Android／網頁）・**已上架 App Store**<br><br>**重點**：月薪、時薪、按件計酬與公務人員四種計薪制度；跨日班引擎；勞健保、二代健保、所得稅依官方費率；資料只加密存在使用者手機<br><br>**技術**：Flutter · 純 Dart 計算核心 · AES-256-GCM 加密備份 · RevenueCat · GitHub Actions<br><br>**測試**：1,270 項以上單元與畫面測試、golden test 逐像素比對<br><br>📲 [App Store 下載](https://apps.apple.com/tw/app/id6833072790)　👉 [看完整介紹](warmwage/README.md) |
 
 ---
 

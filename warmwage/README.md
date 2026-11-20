@@ -8,7 +8,7 @@
 
 | 平台 | 連結 |
 |---|---|
-| App Store | 審查中（上架後補上連結） |
+| App Store | [https://apps.apple.com/tw/app/id6833072790](https://apps.apple.com/tw/app/id6833072790) |
 | 網頁內測版 | https://zhi410.github.io/my_app_web/ |
 | 隱私權政策 | https://zhi410.github.io/my_app_web/privacy.html |
 
