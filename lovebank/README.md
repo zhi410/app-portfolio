@@ -9,6 +9,7 @@
 | 平台 | 連結 |
 |---|---|
 | App Store | 審查中（上架後補上連結） |
+| Google Play | 封閉測試中 |
 | 隱私權政策 | https://zhi410.github.io/lovebank-legal/privacy.html |
 | 服務條款 | https://zhi410.github.io/lovebank-legal/terms.html |
 
@@ -20,7 +21,7 @@
 
 LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經伴侶審核後存進情侶金融卡；伴侶互相核發信用卡額度，刷卡兌換願望；吵架有罰單、和好有保單；兩人一起存「見面基金」。所有畫面即時同步到另一半的手機。
 
-- 兩人各自的手機、各自的語言（繁中／英文），帳務即時同步
+- iOS 與 Android 同一套程式碼；兩人各自的手機、各自的語言（繁中／英文），帳務即時同步
 - 同居與異地都適用：伴侶當地時間、深夜靜音推播、多國幣別記帳
 - 所有點數皆為虛擬點數，不串接任何真實銀行或信用卡
 
@@ -37,7 +38,7 @@ LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經�
 | 招財寵物 | 兩人共同養一隻（三花招財貓／愛情發財樹，VIP 另有布偶貓、柴犬管家、招財金龍與豪宅背景）；首頁右下角的**小桌寵**坐在底部分頁欄上，平常呼吸、偶爾趴著打瞌睡並冒對話氣泡，點牠就地彈出選單：餵食（-30 pts，+25 EXP）、摸摸頭（每天 3 次）、領取每日愛心利息（20 + 等級 × 5，VIP 2 倍）；互動後笑眼、腮紅、蹦跳並飄出愛心與經驗值，另一半餵食時你的畫面也即時開心跳起來 |
 | 驚喜與和好 | 愛情盲盒刮刮樂（手指刮開銀漆、可用信用卡付款）、每日幸運刮刮樂、票券夾、情緒保單與吵架罰單、時光膠囊（未到解鎖時間連寄件人都看不到內容） |
 | 異地／異國 | 伴侶當地時間；收件人深夜時推播自動靜音送達；見面倒數夢想金庫；多國幣別記帳與匯率換算 |
-| 共同記帳（VIP） | AA 平分、自訂比例、全額代墊、一鍵結清；自訂分類與月統計；**記帳專案**：出國旅行、搬家等可以開成獨立專案，專案內的支出、分類統計與結清都和日常記帳分開，旅程結束後封存保留 |
+| 共同記帳（VIP） | AA 平分、自訂比例、全額代墊、一鍵結清；**部分還款**：不必一次還清，自訂這次轉多少，差額即時扣減，記錯可撤銷，還款金額等於全部差額時自動結清；自訂分類與月統計；**記帳專案**：出國旅行、搬家等可以開成獨立專案，專案內的支出、分類統計與結清都和日常記帳分開，旅程結束後封存保留 |
 | 月結與分享 | 每月愛情對帳單（家務冠軍、最常兌換的願望），生成 9:16 海報分享限時動態 |
 | iPhone 小工具 | WidgetKit 桌面小工具：活期餘額、伴侶當地時間、見面倒數 |
 | 帳號與安全 | Email 或 Sign in with Apple；刪除帳號時一併撤銷 Apple 授權；資料安全說明頁 |
@@ -83,6 +84,18 @@ LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經�
 |---|---|---|
 | ![記帳專案](screenshots/24_expense_project.jpg) | ![選擇專案](screenshots/25_expense_editor_project.jpg) | |
 
+| 部分還款與一鍵結清並列 | 自訂還款金額 | |
+|---|---|---|
+| ![部分還款按鈕](screenshots/27_expense_repay_buttons.jpg) | ![部分還款](screenshots/26_partial_repayment.jpg) | |
+
+| Android 版（Google Play 商店截圖） | | |
+|---|---|---|
+| ![Android 招財寵物](screenshots/28_android_pet.jpg) | ![Android 記帳專案](screenshots/29_android_expenses.jpg) | |
+
+App Store 產品頁標題素材（3840 × 1646，iOS 27 新版位）：
+
+![App Store 標題素材](screenshots/30_appstore_header.jpg)
+
 （截圖為示範資料。）
 
 ---
@@ -113,8 +126,16 @@ LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經�
 - SwiftUI WidgetKit 桌面小工具，透過 App Group 與 `home_widget` 共享資料
 - Sign in with Apple、APNs、App Group 的簽署設定與佈建描述檔
 
+### Android 與 Google Play
+- 同一套 Flutter 程式碼打包 Android App Bundle，上傳金鑰簽署、Play 應用程式簽署
+- 推播：Android 端以原生 Kotlin 的 `FirebaseMessagingService` 透過同一個 MethodChannel 回傳 token，和 iOS 共用 Dart 端程式；Edge Function 依裝置平台分流，Android 走 FCM HTTP v1（服務帳戶 RS256 換取 access token），並依收件人時區改用靜音通知頻道
+- 內購：RevenueCat 同時串接 App Store 與 Google Play，兩邊商品掛在同一個 VIP 權益與同一組方案，伺服器的訂閱驗證不需要改
+- Google Cloud、Firebase、服務帳戶與 Pub/Sub 即時購買通知皆以指令建立
+
 ### 上架自動化
-- 以 App Store Connect API 撰寫腳本：上傳截圖、更新上架文字、把 build 換進送審版本、查詢審核狀態
+- 以 App Store Connect API 撰寫腳本：上傳截圖、更新上架文字、把 build 換進送審版本、查詢審核狀態；iOS 27 的產品頁標題與搜尋結果素材也從 API 讀取官方規格後自動合成上傳
+- 以 Google Play Developer API 撰寫腳本：上傳 AAB 到內部／封閉測試、建立訂閱與依匯率自動定價（174 個地區）、上傳中英文商店文字與圖片
+- Android 宣傳圖直接在 Android 模擬器拍攝，合成打孔鏡頭手機外框，一次輸出 Google Play 截圖、IG 限動與貼文三種尺寸
 - 用「預覽 harness」（覆寫資料來源的假 provider）在模擬器上產生中英文、iPhone／iPad 截圖，再自動合成商店圖
 
 ---
@@ -137,6 +158,8 @@ LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經�
 | **養成數值會被刷**：自己加經驗值、一天領很多次利息 | 經驗值、升級、利息與每人每天 3 次摸摸頭全部由伺服器計算；利息以「領取者時區的今天」判斷、整對情侶一天一次；VIP 2 倍與 VIP 限定品種都在伺服器端判斷（含訂閱過期） |
 | **出國旅行的帳和日常帳混在一起** | 新增「記帳專案」：每筆帳目多一個專案欄位（空白＝日常），餘額與結清改成以「日常」或「單一專案」為範圍，結清紀錄標上專案名稱；伺服器檢查專案必須屬於同一對情侶；舊版 App 呼叫結清時不帶參數，只會處理日常帳目，不影響專案 |
 | **iPhone 16 Pro 的記帳畫面滿版、無法往下滑關閉** | 會長高的底部面板沒加 `useSafeArea`，內容一多就長進動態島，拖曳把手被擋住。全 App 19 個面板一次修正並加上關閉按鈕，再寫一個掃描原始碼的測試：任何 `isScrollControlled` 面板缺少 `useSafeArea` 就失敗並指出檔名行號 |
+| **欠款不一定一次還清，但舊版 App 還在使用** | 部分還款沿用「結清紀錄」的類型、但先標成未結清，並多一個 `is_partial` 欄位區分；如此一來差額公式完全不用改（未結清帳目加總自然扣掉），舊版 App 也會把它當成轉帳紀錄顯示、不計入支出、不可編輯。還款金額等於全部差額時直接走一鍵結清；記錯時刪除這筆即撤銷 |
+| **Android 推播要和 iOS 共用同一套 Dart 程式** | Android 端以 Kotlin 實作和 iOS AppDelegate 一模一樣的 MethodChannel 介面（要求權限並回傳 token、點通知回傳類型）；`google-services` 外掛只在設定檔存在時才套用，沒有 Firebase 設定也能編譯 |
 | **送審期間不能換 build，但新功能已完成** | 新功能只上傳 TestFlight、不換進送審版本；伺服器端的改動先確認與送審中的舊 build 相容（舊版仍能設定心情、2x 加倍照常運作，看不懂的新天氣只顯示「還沒設定」） |
 
 ---
@@ -168,7 +191,7 @@ LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經�
 - **資料庫回滾測試**：每個伺服器模組各一份 SQL 測試，在交易中建立假使用者、走完整流程，最後一定 `raise exception` 讓所有變更回滾，正式資料庫不留任何痕跡。涵蓋：
   - 權限：其他情侶讀不到、App 不能繞過 RPC 直接改表
   - 金流：紅包、法庭賠償（活期不足改刷信用卡）、定存本息（1,000 → 1,050／1,150）、盲盒信用卡付款與額度不足
-  - 規則：賓果 8 條連線與大獎券、2x 加倍的每日上限與開關、時光膠囊解鎖時間、寵物升級／每人每天 3 次摸摸頭／利息一天一次與 VIP 2 倍、記帳專案與日常分開結清
+  - 規則：賓果 8 條連線與大獎券、2x 加倍的每日上限與開關、時光膠囊解鎖時間、寵物升級／每人每天 3 次摸摸頭／利息一天一次與 VIP 2 倍、記帳專案與日常分開結清、部分還款（雙方視角的差額、撤銷、還清自動結清、只影響所屬專案）
   - 相容：舊版 App 的呼叫方式仍可用
 - **Flutter 單元與畫面測試**：購買錯誤解析與中文說明、VIP 權益判定（含權益漏掛時的商品後備）、多幣別與時區、登入錯誤訊息、首頁桌寵不攔截點擊與互動選單、所有底部面板都避開動態島
 - **模擬器截圖檢查**：所有新畫面以假資料在模擬器截圖，中英文各一次，檢查溢位與遮擋
@@ -179,7 +202,7 @@ LoveBank 把這些變成一套有儀式感的遊戲：做家務賺點數、經�
 
 ## 使用技術
 
-Flutter · Dart · Riverpod · Supabase（PostgreSQL、RLS、Realtime、pg_cron、pg_net、Edge Functions / Deno）· RevenueCat · StoreKit · APNs · Sign in with Apple · SwiftUI WidgetKit · App Group · App Store Connect API · GitHub Pages
+Flutter · Dart · Kotlin · Riverpod · Supabase（PostgreSQL、RLS、Realtime、pg_cron、pg_net、Edge Functions / Deno）· RevenueCat · StoreKit · Google Play Billing · APNs · Firebase Cloud Messaging · Sign in with Apple · SwiftUI WidgetKit · App Group · App Store Connect API · Google Play Developer API · Google Cloud · GitHub Pages
 
 ---
 
