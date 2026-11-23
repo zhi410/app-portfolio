@@ -8,8 +8,8 @@
 
 | 平台 | 連結 |
 |---|---|
-| App Store | 審查中（上架後補上連結） |
-| Google Play | 封閉測試中 |
+| App Store | https://apps.apple.com/tw/app/id6835877857 |
+| Google Play | 封閉測試中（正式上架前需 12 位測試員 × 14 天） |
 | 隱私權政策 | https://zhi410.github.io/lovebank-legal/privacy.html |
 | 服務條款 | https://zhi410.github.io/lovebank-legal/terms.html |
 

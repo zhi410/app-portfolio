@@ -22,7 +22,7 @@
 
 | | |
 |---|---|
-| ![LoveBank](lovebank/screenshots/01_home.jpg) | **類型**：雙人即時同步的情侶互動 App（iOS＋Android，中英雙語）<br><br>**重點**：情侶雙卡與信用評分、首頁招財寵物、愛情小法庭、約會賓果、定存生利息、心情天氣 2x 照顧加倍、時光膠囊、異地時差、多國幣別、旅行記帳專案與部分還款、桌面小工具<br><br>**技術**：Flutter · Riverpod · Supabase（RLS、Realtime、pg_cron、Edge Functions）· APNs／FCM · RevenueCat · WidgetKit<br><br>**測試**：資料庫回滾測試（不留痕跡地驗證權限與金流）、模擬器中英文截圖檢查、上線後購買監控<br><br>👉 [看完整介紹](lovebank/README.md) |
+| ![LoveBank](lovebank/screenshots/01_home.jpg) | **類型**：雙人即時同步的情侶互動 App（iOS＋Android，中英雙語）・**已上架 App Store**<br><br>**重點**：情侶雙卡與信用評分、首頁招財寵物、愛情小法庭、約會賓果、定存生利息、心情天氣 2x 照顧加倍、時光膠囊、異地時差、多國幣別、旅行記帳專案與部分還款、桌面小工具<br><br>**技術**：Flutter · Riverpod · Supabase（RLS、Realtime、pg_cron、Edge Functions）· APNs／FCM · RevenueCat · WidgetKit<br><br>**測試**：資料庫回滾測試（不留痕跡地驗證權限與金流）、模擬器中英文截圖檢查、上線後購買監控<br><br>👉 [看完整介紹](lovebank/README.md)　📱 [App Store](https://apps.apple.com/tw/app/id6835877857) |
 
 ---
 
