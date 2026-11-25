@@ -12,7 +12,7 @@
 
 | | |
 |---|---|
-| ![暖薪](warmwage/screenshots/01_dashboard.jpg) | **類型**：薪資試算工具（iOS／Android／網頁）・**已上架 App Store**<br><br>**重點**：月薪、時薪、按件計酬與公務人員四種計薪制度；跨日班引擎；勞健保、二代健保、所得稅依官方費率；資料只加密存在使用者手機<br><br>**技術**：Flutter · 純 Dart 計算核心 · AES-256-GCM 加密備份 · RevenueCat · GitHub Actions<br><br>**測試**：1,270 項以上單元與畫面測試、golden test 逐像素比對<br><br>📲 [App Store 下載](https://apps.apple.com/tw/app/id6833072790)　👉 [看完整介紹](warmwage/README.md) |
+| ![暖薪](warmwage/screenshots/01_dashboard.jpg) | **類型**：薪資試算工具（iOS／Android／網頁）・**已上架 App Store**<br><br>**重點**：月薪、時薪、按件計酬與公務人員四種計薪制度；即時計數器與鎖定畫面小工具；自訂計薪週期與公司加班費率；跨日班引擎；勞健保、二代健保、所得稅依官方費率；資料只加密存在使用者手機<br><br>**技術**：Flutter · 純 Dart 計算核心 · WidgetKit · AES-256-GCM 加密備份 · RevenueCat · Supabase 營運監控 · GitHub Actions<br><br>**測試**：1,330 項以上單元與畫面測試、golden test 逐像素比對<br><br>📲 [App Store 下載](https://apps.apple.com/tw/app/id6833072790)　👉 [看完整介紹](warmwage/README.md) |
 
 ---
 
@@ -30,7 +30,7 @@
 
 | | 暖薪 | LoveBank |
 |---|---|---|
-| 資料存放 | 只在使用者手機（無伺服器） | Supabase 雲端，兩人即時同步 |
+| 資料存放 | 只在使用者手機（後端只接收匿名訂閱事件做營運監控） | Supabase 雲端，兩人即時同步 |
 | 最大挑戰 | 法規正確性、絕不遺失或覆蓋使用者資料 | 雙人權限與防作弊、點數經濟、時區與即時推播 |
 | 內購 | RevenueCat（匿名、免註冊） | RevenueCat（一人訂閱、兩人共享，伺服器驗證） |
 | 測試重心 | 計算特性測試、golden test | 資料庫交易回滾測試、權限測試 |
